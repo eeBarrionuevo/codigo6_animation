@@ -32,6 +32,21 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text("HeroAnimation"),
             ),
+            Container(
+              width: 300,
+              height: 300,
+              color: Colors.blue,
+              child: AnimatedAlign(
+                alignment: Alignment.topLeft,
+                duration: Duration(seconds: 2),
+                curve: Curves.bounceIn,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.amber,
+                ),
+              ),
+            ),
           ],
         ),
       ),
