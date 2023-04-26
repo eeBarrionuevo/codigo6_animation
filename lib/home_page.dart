@@ -37,15 +37,69 @@ class _HomePageState extends State<HomePage> {
               height: 300,
               color: Colors.blue,
               child: AnimatedAlign(
-                alignment: Alignment.topLeft,
+                alignment: Alignment.bottomRight,
                 duration: Duration(seconds: 2),
                 curve: Curves.bounceIn,
-                child: Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.amber,
+                child: Image.asset(
+                  "assets/images/batman.webp",
+                  height: 100,
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            AnimatedContainer(
+              duration: Duration(seconds: 2),
+              curve: Curves.easeInBack,
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Colors.amber,
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const AnimatedCrossFade(
+              firstChild: FlutterLogo(
+                size: 200,
+                style: FlutterLogoStyle.horizontal,
+              ),
+              secondChild: FlutterLogo(
+                size: 200,
+                style: FlutterLogoStyle.stacked,
+              ),
+              crossFadeState: CrossFadeState.showFirst,
+              duration: Duration(seconds: 3),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const AnimatedDefaultTextStyle(
+              child: Text(
+                "Justice League",
+              ),
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 50.0,
+              ),
+              duration: Duration(seconds: 3),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            AnimatedOpacity(
+              opacity: 1,
+              duration: const Duration(seconds: 3),
+              curve: Curves.bounceOut,
+              child: Image.asset(
+                "assets/images/batman.webp",
+              ),
+            ),
+            const SizedBox(
+              height: 200,
             ),
           ],
         ),
