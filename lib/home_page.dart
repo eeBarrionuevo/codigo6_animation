@@ -99,6 +99,47 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
+              height: 20,
+            ),
+            const AnimatedPhysicalModel(
+              child: FlutterLogo(
+                size: 200,
+              ),
+              shape: BoxShape.rectangle,
+              elevation: 0,
+              color: Colors.blue,
+              shadowColor: Colors.red,
+              duration: Duration(seconds: 1),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 300,
+              width: 300,
+              color: Colors.amber,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  AnimatedPositioned(
+                    // child: Image.asset(
+                    //   "assets/images/batman.webp",
+                    //   height: 50,
+                    //   width: 60,
+                    // ),
+                    top: -30,
+                    left: -20,
+                    child: Container(
+                      color: Colors.red,
+                      height: 70,
+                      width: 70,
+                    ),
+                    duration: Duration(seconds: 3),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
               height: 200,
             ),
           ],
