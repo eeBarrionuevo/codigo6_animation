@@ -1,3 +1,4 @@
+import 'package:codigo6_animation/animation_page.dart';
 import 'package:codigo6_animation/hero_page.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
               width: 200,
               decoration: BoxDecoration(
                 color: Colors.amber,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(200),
               ),
             ),
             const SizedBox(
@@ -127,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                     //   height: 50,
                     //   width: 60,
                     // ),
-                    top: -30,
+                    top: 50,
                     left: -20,
                     child: Container(
                       color: Colors.red,
@@ -138,6 +139,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AnimationPage()));
+              },
+              child: Text("Animation Controller"),
             ),
             const SizedBox(
               height: 200,
