@@ -5,6 +5,11 @@ class HeroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // if (ModalRoute.of(context) != null) {
+    //   List data = ModalRoute.of(context)!.settings.arguments as List;
+    //   print(data);
+    // }
+
     return Scaffold(
       body: Column(
         children: [
@@ -13,6 +18,13 @@ class HeroPage extends StatelessWidget {
             child: Image.asset(
               "assets/images/batman.webp",
             ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Navigator.maybePop(context);
+              print(Navigator.canPop(context));
+            },
+            child: Text("Navigator"),
           ),
         ],
       ),

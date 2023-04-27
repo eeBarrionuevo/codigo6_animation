@@ -3,7 +3,7 @@ import 'package:codigo6_animation/hero_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  static const String nameRoute = "/";
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -154,9 +154,21 @@ class _HomePageState extends State<HomePage> {
             ///Navegación!!!!!
             ElevatedButton(
               onPressed: () {
-                // Navigator.push(context, route);
-                //Navigator.pop(context);
-                Navigator.pushNamed(context, AnimationPage.nameRoute);
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => HeroPage()));
+                Navigator.pushNamed(
+                  context,
+                  HeroPage.nameRoute,
+                  // arguments: [1, 3, 4],
+                );
+                // Navigator.pushNamedAndRemoveUntil(
+                //     context, HeroPage.nameRoute, (route) => false);
+
+                // Navigator.pushReplacementNamed(context, HeroPage.nameRoute);
+                // Navigator.popAndPushNamed(context, HeroPage.nameRoute);
+                // Navigator.maybePop(context);
+                // bool value = Navigator.canPop(context);
+                // print(value);
               },
               child: Text("Navigator"),
             ),
