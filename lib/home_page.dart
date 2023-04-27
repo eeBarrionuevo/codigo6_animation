@@ -148,6 +148,19 @@ class _HomePageState extends State<HomePage> {
               child: Text("Animation Controller"),
             ),
             const SizedBox(
+              height: 100,
+            ),
+
+            ///Navegación!!!!!
+            ElevatedButton(
+              onPressed: () {
+                // Navigator.push(context, route);
+                //Navigator.pop(context);
+                Navigator.pushNamed(context, AnimationPage.nameRoute);
+              },
+              child: Text("Navigator"),
+            ),
+            const SizedBox(
               height: 200,
             ),
           ],

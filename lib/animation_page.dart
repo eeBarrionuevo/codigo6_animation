@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AnimationPage extends StatefulWidget {
+  static const String nameRoute = "/animation";
+
   @override
   State<AnimationPage> createState() => _AnimationPageState();
 }
@@ -19,12 +21,30 @@ class _AnimationPageState extends State<AnimationPage>
 
     myController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
     );
 
-    myAnimation = Tween<double>(begin: 0, end: 300).animate(myController);
+    myAnimation = Tween<double>(begin: 0, end: 300)
+        .chain(CurveTween(curve: Curves.bounceInOut))
+        .animate(myController);
 
     myController.forward();
+
+    myController.addListener(() {
+      // print(myAnimation.value);
+      setState(() {});
+    });
+
+    myController.addStatusListener((status) {
+      // print(status);
+      if (status == AnimationStatus.completed) {
+        myController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        // print(status);
+        myController.forward();
+      }
+    });
+
     // testAnimationController = AnimationController(
     //   vsync: this,
     //   duration: const Duration(seconds: 10),
@@ -37,6 +57,12 @@ class _AnimationPageState extends State<AnimationPage>
     // testAnimationController.addListener(() {
     //   // print(testAnimation.value);
     // });
+  }
+
+  @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
   }
 
   @override
@@ -59,7 +85,7 @@ class _AnimationPageState extends State<AnimationPage>
       body: AnimatedBuilder(
         animation: myAnimation,
         builder: (context, child) {
-          print(myAnimation.value);
+          // print(myAnimation.value);
           return Container(
             height: myAnimation.value,
             width: myAnimation.value,
