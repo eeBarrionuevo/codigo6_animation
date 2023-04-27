@@ -8,6 +8,7 @@ class AnimationPage extends StatefulWidget {
 class _AnimationPageState extends State<AnimationPage>
     with SingleTickerProviderStateMixin {
   late AnimationController testAnimationController;
+  late Animation testAnimation;
 
   @override
   void initState() {
@@ -17,9 +18,13 @@ class _AnimationPageState extends State<AnimationPage>
       vsync: this,
       duration: const Duration(seconds: 10),
     );
+
+    testAnimation = ColorTween(begin: Colors.amber, end: Colors.black)
+        .animate(testAnimationController);
+
     testAnimationController.forward();
     testAnimationController.addListener(() {
-      print(testAnimationController.value);
+      print(testAnimation.value);
     });
   }
 
@@ -28,6 +33,12 @@ class _AnimationPageState extends State<AnimationPage>
     return Scaffold(
       appBar: AppBar(
         title: Text("Animation"),
+      ),
+      body: AnimatedBuilder(
+        animation: testAnimation,
+        builder: (context, child) {
+          return Text("Hola");
+        },
       ),
     );
   }
