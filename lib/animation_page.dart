@@ -7,25 +7,36 @@ class AnimationPage extends StatefulWidget {
 
 class _AnimationPageState extends State<AnimationPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController testAnimationController;
-  late Animation testAnimation;
+  // late AnimationController testAnimationController;
+  // late Animation testAnimation;
+
+  late AnimationController myController;
+  late Animation<double> myAnimation;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    testAnimationController = AnimationController(
+
+    myController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 3),
     );
 
-    testAnimation = ColorTween(begin: Colors.amber, end: Colors.black)
-        .animate(testAnimationController);
+    myAnimation = Tween<double>(begin: 0, end: 300).animate(myController);
 
-    testAnimationController.forward();
-    testAnimationController.addListener(() {
-      print(testAnimation.value);
-    });
+    myController.forward();
+    // testAnimationController = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(seconds: 10),
+    // );
+
+    // testAnimation = ColorTween(begin: Colors.amber, end: Colors.black)
+    //     .animate(testAnimationController);
+
+    // testAnimationController.forward();
+    // testAnimationController.addListener(() {
+    //   // print(testAnimation.value);
+    // });
   }
 
   @override
@@ -34,10 +45,26 @@ class _AnimationPageState extends State<AnimationPage>
       appBar: AppBar(
         title: Text("Animation"),
       ),
+      // body: AnimatedBuilder(
+      //   animation: testAnimation,
+      //   builder: (context, child) {
+      //     print(testAnimation.value);
+      //     return Container(
+      //       height: 200,
+      //       width: 200,
+      //       color: testAnimation.value,
+      //     );
+      //   },
+      // ),
       body: AnimatedBuilder(
-        animation: testAnimation,
+        animation: myAnimation,
         builder: (context, child) {
-          return Text("Hola");
+          print(myAnimation.value);
+          return Container(
+            height: myAnimation.value,
+            width: myAnimation.value,
+            color: Colors.amber,
+          );
         },
       ),
     );
